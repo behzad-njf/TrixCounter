@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="start_new_match">شروع بازی جدید</string>
+    <string name="history">تاریخچه</string>
+    <string name="settings">تنظیمات</string>
+
+    <string name="start">شروع</string>
+
+    <string name="label_player1">بازیکن ۱</string>
+    <string name="label_player2">بازیکن ۲</string>
+    <string name="label_player3">بازیکن ۳</string>
+    <string name="label_player4">بازیکن ۴</string>
+
+
+    <string name="press_again_to_exit">برای خروج دوباره بزنید</string>
+    <string name="select_the_contract">قرارداد را انتخاب کنید</string>
+    <string name="king_of_hearts">شاه دل</string>
+    <string name="diamonds">خشت</string>
+    <string name="queens">بی بی</string>
+    <string name="collections">مجموعه</string>
+    <string name="save">ثبت</string>
+    <string name="reset">ریست</string>
+    <string name="dialog_description_queens">تعداد بی بی ها را برای هر بازیکن مشخص کنید </string>
+    <string name="dialog_description_collections">تعداد دست ها را برای هر بازیکن ثبت کنید</string>
+    <string name="dialog_description_diamonds">تعداد خشت ها را برای هر بازیکن ثبت کنید</string>
+    <string name="dialog_description_king_of_hearts">بازیکنی که شاه دل را برده انتخاب کنید</string>
+    <string name="dialog_description_trex">بازیکنان را به ترتیب انتخاب کنید</string>
+    <string name="title_activity_history">تاریخچه بازی ها</string>
+
+
+    <string name="delete_game">حذف دست</string>
+    <string name="delete_question">آیا از حذف این دست مطمئن هستید؟</string>
+    <string name="yes_delete">بله، حذف شود</string>
+    <string name="cancel">انصراف</string>
+</resources>
