@@ -27,6 +27,8 @@
     <string name="dialog_description_trex">بازیکنان را به ترتیب انتخاب کنید</string>
     <string name="title_activity_history">تاریخچه بازی ها</string>
 
+    <string name="delete_match">حذف بازی</string>
+    <string name="delete_match_question">آیا از حذف این بازی مطمئن هستید؟</string>
 
     <string name="delete_game">حذف دست</string>
     <string name="delete_question">آیا از حذف این دست مطمئن هستید؟</string>

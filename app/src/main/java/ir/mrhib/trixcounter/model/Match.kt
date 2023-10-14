@@ -11,4 +11,6 @@ data class Match(
     @ColumnInfo(name = "player2") val player2: String,
     @ColumnInfo(name = "player3") val player3: String,
     @ColumnInfo(name = "player4") val player4: String,
+    @ColumnInfo(name = "match_date", defaultValue = "CURRENT_TIMESTAMP")
+    val createdDate: Long = System.currentTimeMillis()
 )

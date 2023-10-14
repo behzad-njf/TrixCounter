@@ -18,12 +18,15 @@ class TableActivityViewModel @Inject constructor(
     private val gameRepository: GameRepository
 ) : ViewModel() {
 
-    val matchId = MutableLiveData<Int>().apply {
-        value = 0
+    var matchId = MutableLiveData<Int>()
+    val allGames: LiveData<List<Game>>
+
+    init {
+        allGames = matchId.switchMap {
+            gameRepository.getAllGames(it)
+        }
     }
-    val allGames: LiveData<List<Game>> = matchId.switchMap {
-        gameRepository.getAllGames(it)
-    }
+
 
     fun insertNewGame(game: Game) {
         viewModelScope.launch(Dispatchers.IO) {

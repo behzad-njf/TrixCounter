@@ -13,6 +13,10 @@ class MatchesRepository @Inject constructor(private val matchDAO: MatchDAO) {
         return Single.fromCallable { matchDAO.insertNewMatch(match) }
     }
 
+    suspend fun deleteMatch(match: Match) {
+        matchDAO.deleteMatch(match)
+    }
+
     suspend fun updateMatch(match: Match) =
         matchDAO.updateMatch(match)
 

@@ -34,6 +34,10 @@
 
     <string name="delete_game">Delete Game</string>
     <string name="delete_question">Are you sure about delete this game?</string>
+
+    <string name="delete_match">Delete Match</string>
+    <string name="delete_match_question">Are you sure about delete this match?</string>
+
     <string name="yes_delete">Yes,Delete</string>
     <string name="cancel">Cancel</string>
 
