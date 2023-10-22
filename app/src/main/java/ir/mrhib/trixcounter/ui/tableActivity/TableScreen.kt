@@ -1,15 +1,11 @@
 package ir.mrhib.trixcounter.ui.tableActivity
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,13 +16,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -34,23 +31,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import ir.mrhib.clinicbookingsystem.ui.dialogs.CustomDialog
 import ir.mrhib.trixcounter.R
 import ir.mrhib.trixcounter.model.Game
-import ir.mrhib.trixcounter.ui.theme.titr
+import ir.mrhib.trixcounter.ui.theme.ThemeColors
 import ir.mrhib.trixcounter.ui.theme.vazir
-import kotlinx.coroutines.flow.MutableStateFlow
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -92,10 +84,10 @@ fun TableScreen(viewModel: TableActivityViewModel = hiltViewModel()) {
             Modifier
                 .fillMaxSize()
                 .padding(16.dp)
-                .border(1.dp, Color.LightGray, RoundedCornerShape(15.dp))
+                .border(1.dp, MaterialTheme.colorScheme.background, RoundedCornerShape(15.dp))
         ) {
-            item {
-                Column {
+//            item {
+                stickyHeader {
                     Row(
                         Modifier
                             .background(Color.LightGray, RoundedCornerShape(15.dp))
@@ -103,30 +95,76 @@ fun TableScreen(viewModel: TableActivityViewModel = hiltViewModel()) {
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         TableCell(text = " ", weight = column1Weight)
-                        TableCell(text = playersNames[0], weight = column2Weight, 13)
-                        TableCell(text = playersNames[1], weight = column2Weight, 13)
-                        TableCell(text = playersNames[2], weight = column2Weight, 13)
-                        TableCell(text = playersNames[3], weight = column2Weight, 13)
+                        TableCell(text = " ", weight = 0.05f)
+                        TableCell(
+                            text = playersNames[0],
+                            weight = column2Weight,
+                            17,
+                            color = Color.Black
+                        )
+                        TableCell(
+                            text = playersNames[1],
+                            weight = column2Weight,
+                            17,
+                            color = Color.Black
+                        )
+                        TableCell(
+                            text = playersNames[2],
+                            weight = column2Weight,
+                            17,
+                            color = Color.Black
+                        )
+                        TableCell(
+                            text = playersNames[3],
+                            weight = column2Weight,
+                            17,
+                            color = Color.Black
+                        )
                     }
                     Row(
                         Modifier
-                            .background(Color(0x93AAAAAA), RoundedCornerShape(15.dp))
-                            .offset(0.dp, (-5).dp).
-                        height(30.dp).
-                        wrapContentHeight(),
+                            .background(Color(0xFFD3D3D3), RoundedCornerShape(15.dp))
+                            .offset(0.dp, (-5).dp)
+                            .height(30.dp)
+                            .wrapContentHeight(),
 //                            .border(1.dp, Color.Black, RoundedCornerShape(15.dp)),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         TableCell(text = " ", weight = column1Weight)
-                        TableCell(text = points.value[0].toString(), weight = column2Weight, 25,color = getColor(points.value, points.value[0]))
-                        TableCell(text = points.value[1].toString(), weight = column2Weight, 25,color = getColor(points.value, points.value[1]))
-                        TableCell(text = points.value[2].toString(), weight = column2Weight, 25,color = getColor(points.value, points.value[2]))
-                        TableCell(text = points.value[3].toString(), weight = column2Weight, 25,color = getColor(points.value, points.value[3]))
+                        TableCell(text = " ", weight = 0.05f)
+                        TableCell(
+                            text = points.value[0].toString(),
+                            weight = column2Weight,
+                            30,
+                            color = getColor(points.value, points.value[0])
+                        )
+                        TableCell(
+                            text = points.value[1].toString(),
+                            weight = column2Weight,
+                            30,
+                            color = getColor(points.value, points.value[1])
+                        )
+                        TableCell(
+                            text = points.value[2].toString(),
+                            weight = column2Weight,
+                            30,
+                            color = getColor(points.value, points.value[2])
+                        )
+                        TableCell(
+                            text = points.value[3].toString(),
+                            weight = column2Weight,
+                            30,
+                            color = getColor(points.value, points.value[3])
+                        )
                     }
                 }
-            }
+//            }
+//            itemsIndexed(games.reversed()){index: Int, it: Game ->
+//
+//            }
 
-            items(games.reversed()) {
+            itemsIndexed(games.reversed()) { index: Int, it: Game ->
+                players[it.king].contracts.remove(CONTRACTS.values()[it.contract])
                 Row(
                     Modifier
                         .fillMaxWidth()
@@ -138,6 +176,7 @@ fun TableScreen(viewModel: TableActivityViewModel = hiltViewModel()) {
                             }
                         ), verticalAlignment = Alignment.CenterVertically
                 ) {
+                    TableCell(text = "${(games.size - index)}", weight = 0.05f)
                     when (it.contract) {
                         0 -> TableCell(vector = CONTRACTS.KING_OF_HEARTS.vector, column1Weight)
                         1 -> TableCell(vector = CONTRACTS.DIAMONDS.vector, column1Weight)
@@ -180,10 +219,9 @@ fun RowScope.TableCell(
     Box(
         modifier = Modifier.weight(weight), contentAlignment = Alignment.Center
     ) {
-        Image(
-            painterResource(id = vector), contentDescription = "",
+        Icon(
+            imageVector = ImageVector.vectorResource(vector), contentDescription = "",
             Modifier.width(25.dp),
-            contentScale = ContentScale.Fit,
         )
     }
 }
@@ -192,9 +230,9 @@ fun RowScope.TableCell(
 fun RowScope.TableCell(
     text: String,
     weight: Float,
-    fontSize: Int = 15,
+    fontSize: Int = 17,
     contractPlayer: Boolean = false,
-    color: Color = Color.Black,
+    color: Color = MaterialTheme.colorScheme.primary,
     style: TextStyle? = null
 ) {
     Box(
@@ -207,18 +245,19 @@ fun RowScope.TableCell(
             Modifier.wrapContentHeight(),
             fontFamily = vazir,
             fontSize = fontSize.sp,
-            color = if (contractPlayer) Color.Blue else color,
+            color = if (contractPlayer) MaterialTheme.colorScheme.tertiary else color,
             style = style ?: TextStyle(fontSize = fontSize.sp)
         )
     }
 }
 
 
+@Composable
 fun getColor(points: IntArray, point: Int): Color {
     return when (points.sortedArray().indexOf(point)) {
         0 -> Color.Red
-        1 -> Color.Yellow
+        1 -> if (isSystemInDarkTheme()) Color(0xFFFFC329) else Color(0xFFB48100)
         2 -> Color.Black
-        else -> Color(0xFF3F7400)
+        else -> if (isSystemInDarkTheme()) ThemeColors.Night.text else ThemeColors.Day.text
     }
 }

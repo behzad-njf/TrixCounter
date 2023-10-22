@@ -49,8 +49,10 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -115,12 +117,14 @@ class MainActivity : ComponentActivity() {
                 visible = showPlayerNameBox.value,
                 modifier = Modifier.align(TopCenter)
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.trix), contentDescription = "",
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.trix),
+                    contentDescription = "",
                     modifier = Modifier
                         .size(100.dp)
                         .align(TopCenter)
-                        .padding(0.dp, 20.dp)
+                        .padding(0.dp, 20.dp),
+                    tint = MaterialTheme.colorScheme.primary
                 )
             }
             Column(
@@ -139,11 +143,13 @@ class MainActivity : ComponentActivity() {
                     visible = !showPlayerNameBox.value,
                     modifier = Modifier.align(CenterHorizontally)
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.trix), contentDescription = "",
+                    Icon(
+                        imageVector = ImageVector.vectorResource(id = R.drawable.trix),
+                        contentDescription = "",
                         modifier = Modifier
                             .size(150.dp)
-                            .align(CenterHorizontally)
+                            .align(CenterHorizontally),
+                        tint = MaterialTheme.colorScheme.primary
                     )
                 }
             }

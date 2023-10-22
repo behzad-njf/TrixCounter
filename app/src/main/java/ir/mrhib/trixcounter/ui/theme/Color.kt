@@ -2,10 +2,23 @@ package ir.mrhib.trixcounter.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+sealed class ThemeColors(
+    val bacground: Color,
+    val surafce: Color,
+    val primary: Color,
+    val text: Color
+) {
+    object Night : ThemeColors(
+        bacground = Color.Black,
+        surafce = Color.Black,
+        primary = Color.Black,
+        text = Color(0xFF78FF42)
+    )
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+    object Day : ThemeColors(
+        bacground = Color.LightGray,
+        surafce = Color.LightGray,
+        primary = Color.LightGray,
+        text = Color(0xFF227700)
+    )
+}

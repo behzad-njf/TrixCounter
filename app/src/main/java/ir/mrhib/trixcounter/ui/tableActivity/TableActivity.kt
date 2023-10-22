@@ -33,6 +33,7 @@ import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -113,6 +114,14 @@ class TableActivity : ComponentActivity() {
                 }
 
                 Scaffold(topBar = { }, floatingActionButton = {
+//                    Row(modifier = Modifier.fillMaxWidth()) {
+//                        FloatingActionButton(onClick = {
+//                            extended.value = !extended.value
+//                        }, content = {
+//                            Icon(Icons.Filled.List, "Table")
+//                        }, containerColor = Color(0xD8A8A8A8), contentColor = Color(0xFF000000)
+//                        )
+//                        Spacer(modifier = Modifier.weight(1f))
                     Column(horizontalAlignment = Alignment.End) {
                         if (extended.value) {
                             players.forEach {
@@ -138,13 +147,19 @@ class TableActivity : ComponentActivity() {
                             }
                         }
 
-                        FloatingActionButton(onClick = {
-                            extended.value = !extended.value
-                        }, content = {
-                            Icon(Icons.Filled.Create, "Create a new Service")
-                        }, containerColor = Color(0xD8A8A8A8), contentColor = Color(0xFF000000)
+                        FloatingActionButton(
+                            onClick = {
+                                extended.value = !extended.value
+                            },
+                            content = {
+                                Icon(Icons.Filled.Create, "Create a new Service")
+                            },
+                            containerColor = Color(0xD8A8A8A8),
+                            contentColor = Color(0xFF000000)
                         )
                     }
+//                    }
+
                 }, content = {
                     Surface(
                         modifier = Modifier.padding(it)
@@ -169,7 +184,6 @@ class TableActivity : ComponentActivity() {
                 pointP4 = if (playerIndex == 3) -75 else 0
             )
         )
-        players[contractPlayer].contracts.remove(CONTRACTS.KING_OF_HEARTS)
     }
 
     private fun insertNewTrixGame(orders: SnapshotStateList<String>, contractPlayer: Int) {
@@ -185,7 +199,6 @@ class TableActivity : ComponentActivity() {
                 pointP4 = (tmpList.indexOf(playersNames[3]) + 1) * 50,
             )
         )
-        players[contractPlayer].contracts.remove(CONTRACTS.TREX)
     }
 
     @Composable
@@ -277,7 +290,10 @@ class TableActivity : ComponentActivity() {
                         }, modifier = Modifier.weight(0.5f)
                     ) {
                         Row {
-                            Icon(imageVector = Icons.Filled.Refresh, contentDescription = resources.getString(R.string.reset))
+                            Icon(
+                                imageVector = Icons.Filled.Refresh,
+                                contentDescription = resources.getString(R.string.reset)
+                            )
                             Text(text = resources.getString(R.string.reset))
                         }
                     }
@@ -289,7 +305,10 @@ class TableActivity : ComponentActivity() {
                         }, modifier = Modifier.weight(0.5f), enabled = orders.size == 4
                     ) {
                         Row {
-                            Icon(imageVector = Icons.Filled.Check, contentDescription = resources.getString(R.string.save))
+                            Icon(
+                                imageVector = Icons.Filled.Check,
+                                contentDescription = resources.getString(R.string.save)
+                            )
                             Text(text = resources.getString(R.string.save))
                         }
                     }
@@ -398,7 +417,7 @@ class TableActivity : ComponentActivity() {
                                 Text(
                                     text = points[it.id].toString(),
                                     fontFamily = titr,
-                                    color = Color.Blue,
+                                    color = MaterialTheme.colorScheme.primary,
                                     textAlign = TextAlign.Center
                                 )
                             }
@@ -413,7 +432,11 @@ class TableActivity : ComponentActivity() {
                                     tint = Color.Black
                                 )
                             }
-                            Text(text = "${abs(points[it.id] / trickPoint)}", fontFamily = vazir)
+                            Text(
+                                text = "${abs(points[it.id] / trickPoint)}",
+                                fontFamily = vazir,
+                                color = MaterialTheme.colorScheme.primary
+                            )
 
                             IconButton(
                                 onClick = {
@@ -445,7 +468,6 @@ class TableActivity : ComponentActivity() {
                                 pointP4 = points[3]
                             )
                         )
-                        players[contractPlayer].contracts.remove(contract)
                         showDialog.value = false
                     }, enabled = when (contract) {
                         CONTRACTS.QUEENS -> points.sum() == -100
@@ -638,7 +660,7 @@ sealed class BackPress {
 
 
 enum class CONTRACTS(val vector: Int) {
-    KING_OF_HEARTS(R.drawable.king_of_hearts), DIAMONDS(R.drawable.diamond_ace), QUEENS(R.drawable.queens), COLLECTIONS(
+    KING_OF_HEARTS(R.drawable.king_of_heart), DIAMONDS(R.drawable.diamond_ace), QUEENS(R.drawable.queens), COLLECTIONS(
         R.drawable.trix
     ),
     TREX(R.drawable.joker)
